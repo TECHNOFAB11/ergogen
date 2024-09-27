@@ -1,6 +1,7 @@
 const yaml = require('js-yaml')
 const jszip = require('jszip')
 const makerjs = require('makerjs')
+const fs = require('fs');
 
 const u = require('./utils')
 const a = require('./assert')
@@ -10,7 +11,8 @@ const package_json = require('../package.json')
 
 const fake_require = exports.fake_require = injection => name => {
     const dependencies = {
-        makerjs
+        makerjs,
+        fs,
     }
     if (name.endsWith('package.json')) {
         return package_json
